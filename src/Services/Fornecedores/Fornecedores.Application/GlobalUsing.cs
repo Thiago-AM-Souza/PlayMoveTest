@@ -1,0 +1,9 @@
+﻿global using BuildingBlocks.CQRS;
+global using BuildingBlocks.Errors;
+global using Fornecedores.Application.Data;
+global using Fornecedores.Application.Dtos;
+global using Fornecedores.Domain.Models;
+global using Fornecedores.Domain.ValueObjects;
+global using OneOf;
+global using BuildingBlocks.Extensions;
+global using Fornecedores.Domain.Errors.Fornecedor;
