@@ -1,6 +1,4 @@
-﻿using BuildingBlocks.Errors;
-
-namespace Fornecedores.Domain.Errors.Fornecedor
+﻿namespace Fornecedores.Domain.Errors.Fornecedor
 {
     public record ErroFornecedorExistente : AppError
     {

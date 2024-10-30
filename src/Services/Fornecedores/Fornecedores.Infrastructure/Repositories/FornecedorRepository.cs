@@ -1,7 +1,5 @@
 ﻿using BuildingBlocks.Abstractions;
 using Fornecedores.Application.Data;
-using Fornecedores.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace Fornecedores.Infrastructure.Repositories
 {

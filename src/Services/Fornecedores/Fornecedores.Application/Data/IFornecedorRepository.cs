@@ -1,5 +1,4 @@
 ﻿using BuildingBlocks.Abstractions;
-using Fornecedores.Domain.Models;
 
 namespace Fornecedores.Application.Data
 {

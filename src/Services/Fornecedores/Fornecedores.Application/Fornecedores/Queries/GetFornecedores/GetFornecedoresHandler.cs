@@ -1,9 +1,5 @@
-﻿using BuildingBlocks.CQRS;
-using BuildingBlocks.Pagination;
-using Fornecedores.Application.Data;
-using Fornecedores.Application.Dtos;
+﻿using BuildingBlocks.Pagination;
 using Fornecedores.Application.Extensions;
-using Microsoft.EntityFrameworkCore;
 
 namespace Fornecedores.Application.Fornecedores.Queries.GetFornecedores
 {

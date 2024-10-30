@@ -9,7 +9,7 @@
         EnderecoDto Endereco,
         List<TelefoneDto> Telefones);
 
-    public record CreateFornecedorDto(
+    public record CadastrarFornecedorDto(
         string NomeFantasia,
         string RazaoSocial,
         string Email,
@@ -19,7 +19,7 @@
 
     public record CreateTelDto(string Numero);
 
-    public record UpdateFornecedorDto(
+    public record AtualizarFornecedorDto(
         Guid Id,
         string NomeFantasia,
         string RazaoSocial,

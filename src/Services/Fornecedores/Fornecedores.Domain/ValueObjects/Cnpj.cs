@@ -1,8 +1,5 @@
-﻿using BuildingBlocks.Errors;
-using BuildingBlocks.Extensions;
-using Fornecedores.Domain.Errors;
+﻿using BuildingBlocks.Extensions;
 using Fornecedores.Domain.Errors.Cnpj;
-using OneOf;
 
 namespace Fornecedores.Domain.ValueObjects
 {

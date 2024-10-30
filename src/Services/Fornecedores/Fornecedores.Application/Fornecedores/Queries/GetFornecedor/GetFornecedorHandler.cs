@@ -1,6 +1,4 @@
-﻿using BuildingBlocks.CQRS;
-using Fornecedores.Application.Data;
-using Fornecedores.Application.Extensions;
+﻿using Fornecedores.Application.Extensions;
 
 namespace Fornecedores.Application.Fornecedores.Queries.GetFornecedor
 {
@@ -15,9 +13,7 @@ namespace Fornecedores.Application.Fornecedores.Queries.GetFornecedor
                 return new GetFornecedorResult(fornecedor.ToDto());
             }
 
-            // AMANHA FOCAR NA PARTE DE TRATAMENTO DE ERROS
-
-            return new GetFornecedorResult(fornecedor.ToDto());
+            return new GetFornecedorResult(null);
         }
     }
 }

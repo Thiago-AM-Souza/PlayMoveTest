@@ -1,6 +1,5 @@
 ﻿
 using BuildingBlocks.Pagination;
-using Fornecedores.Application.Dtos;
 using Fornecedores.Application.Fornecedores.Queries.GetFornecedores;
 
 namespace Fornecedores.API.Endpoints.Fornecedor
@@ -27,10 +26,11 @@ namespace Fornecedores.API.Endpoints.Fornecedor
             .RequireAuthorization("Fornecedor")
             .WithGroupName("Fornecedor")
             .WithSummary("Obter todos os Fornecedores")
-            .WithDescription("Obter todos os fornecedores, é possivel passar um parâmetro 'desativado' para retornar apenas fornecedores ativos.")
+            .WithDescription(@"Obter todos os fornecedores, parametros de paginação e para filtrar o estado dos fornecedores, 
+                               true para fornecedores desativados, false para ativados e null para ver todos.")
             .Produces<GetFornecedoresResponse>(StatusCodes.Status200OK)
-            .Produces(StatusCodes.Status204NoContent)
-            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .Produces(StatusCodes.Status200OK)
+            .ProducesProblem(StatusCodes.Status204NoContent)
             .ProducesProblem(StatusCodes.Status401Unauthorized);
         }
     }

@@ -1,6 +1,4 @@
-﻿using BuildingBlocks.DomainObjects;
-using Fornecedores.Domain.ValueObjects;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Fornecedores.Domain.Models
 {
@@ -15,14 +13,9 @@ namespace Fornecedores.Domain.Models
         public Telefone(string numero,
                         Fornecedor fornecedor)
         {
-            Numero = numero;
+            Numero = numero.Replace("(","").Replace(")", "").Replace("-", "").Trim();
             Fornecedor = fornecedor;
             FornecedorId = fornecedor.Id;
-        }
-
-        private Telefone(string numero)
-        {
-            Numero = numero;
         }
 
         public void Alterar(string numero)
@@ -30,22 +23,16 @@ namespace Fornecedores.Domain.Models
             Numero = numero;
         }
 
-        public static bool Verificar(string telefone, out Telefone tel)
+        public static OneOf<bool, AppError> ValidarTelefone(string telefone)
         {
-            tel = null;
+            var validar = Regex.IsMatch(telefone, @"^\(?\d{2}\)?[\s-]?[\s9]?\d{4}-?\d{4}$");
 
-            if (Validar(telefone))
+            if (!validar)
             {
-                tel = new Telefone(telefone);
-                return true;
+                return new ErroFormatoIncorreto("Por favor verifique o formato do telefone.", ErrorType.Validation);
             }
 
-            return false;
-        }
-
-        private static bool Validar(string telefone)
-        {
-            return Regex.IsMatch(telefone, @"^\(?\d{2}\)?[\s-]?[\s9]?\d{4}-?\d{4}$");
+            return true;
         }
     }
 }

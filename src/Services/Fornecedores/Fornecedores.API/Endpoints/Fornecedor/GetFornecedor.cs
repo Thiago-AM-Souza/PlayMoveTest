@@ -1,5 +1,4 @@
-﻿using Fornecedores.Application.Dtos;
-using Fornecedores.Application.Fornecedores.Queries.GetFornecedor;
+﻿using Fornecedores.Application.Fornecedores.Queries.GetFornecedor;
 
 namespace Fornecedores.API.Endpoints.Fornecedor
 {
@@ -13,16 +12,21 @@ namespace Fornecedores.API.Endpoints.Fornecedor
             {
                 var result = await sender.Send(new GetFornecedorQuery(id));
 
-                var response = result.Adapt<GetFornecedorResponse>();
+                if (result.Fornecedor != null)
+                {
+                    var response = result.Adapt<GetFornecedorResponse>();
 
-                return Results.Ok(response);
+                    return Results.Ok(response.Fornecedor);
+                }
+
+                return Results.NotFound("Fornecedor não encontrado com o id fornecido.");
             })
             .RequireAuthorization("Fornecedor")
             .WithGroupName("Fornecedor")
             .WithSummary("Obter Fornecedor por Id")
             .WithDescription("Endpoint")
             .Produces<GetFornecedorResponse>(StatusCodes.Status200OK)
-            .ProducesProblem(StatusCodes.Status400BadRequest);
+            .ProducesProblem(StatusCodes.Status404NotFound);
         }
     }
 }

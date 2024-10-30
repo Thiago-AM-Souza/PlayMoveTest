@@ -1,7 +1,4 @@
-﻿
-using BuildingBlocks.Extensions;
-using BuildingBlocks.Responses;
-using Fornecedores.Application.Fornecedores.Commands.AtivarFornecedor;
+﻿using Fornecedores.Application.Fornecedores.Commands.AtivarFornecedor;
 using Fornecedores.Application.Fornecedores.Commands.DesativarFornecedor;
 
 namespace Fornecedores.API.Endpoints.Fornecedor
@@ -28,9 +25,12 @@ namespace Fornecedores.API.Endpoints.Fornecedor
             .RequireAuthorization("Fornecedor")
             .WithGroupName("Fornecedor")
             .WithSummary("Ativar Fornecedor")
-            .WithDescription("Ativar Fornecedor")
+            .WithDescription("Ativa um fornecedor novamente no sistema.")
             .Produces<StatusFornecedorResponse>(StatusCodes.Status200OK)
-            .ProducesProblem(StatusCodes.Status400BadRequest);
+            .ProducesProblem(StatusCodes.Status401Unauthorized)
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .ProducesProblem(StatusCodes.Status404NotFound)
+            .ProducesProblem(StatusCodes.Status409Conflict);
 
             app.MapPatch("/fornecedores/desativar/{id}", async (Guid id, ISender sender) =>
             {
@@ -47,10 +47,13 @@ namespace Fornecedores.API.Endpoints.Fornecedor
             })
             .RequireAuthorization("Fornecedor")
             .WithGroupName("Fornecedor")
-            .Produces<StatusFornecedorResponse>(StatusCodes.Status201Created)
-            .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("Desativar Fornecedor")
-            .WithDescription("Desativar Fornecedor");
+            .WithDescription("Desativar fornecedor colocando-o em um estado de exclusão.")
+            .Produces<StatusFornecedorResponse>(StatusCodes.Status201Created)
+            .ProducesProblem(StatusCodes.Status401Unauthorized)
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .ProducesProblem(StatusCodes.Status404NotFound)
+            .ProducesProblem(StatusCodes.Status409Conflict);
         }
     }
 }

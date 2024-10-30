@@ -1,6 +1,4 @@
-﻿using BuildingBlocks.Errors;
-
-namespace Fornecedores.Domain.Errors.Cnpj
+﻿namespace Fornecedores.Domain.Errors.Cnpj
 {
     public record ErroCnpjNumeroInvalido : AppError
     {

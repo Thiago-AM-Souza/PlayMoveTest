@@ -1,5 +1,4 @@
-﻿using BuildingBlocks.DomainObjects;
-using Fornecedores.Domain.ValueObjects;
+﻿using Fornecedores.Domain.ValueObjects;
 
 namespace Fornecedores.Domain.Models
 {

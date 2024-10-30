@@ -1,6 +1,5 @@
 ﻿using Fornecedores.Application.Data;
 using Fornecedores.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

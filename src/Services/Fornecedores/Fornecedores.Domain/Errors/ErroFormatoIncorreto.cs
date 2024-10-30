@@ -1,6 +1,4 @@
-﻿using BuildingBlocks.Errors;
-
-namespace Fornecedores.Domain.Errors
+﻿namespace Fornecedores.Domain.Errors
 {
     public record ErroFormatoIncorreto : AppError
     {

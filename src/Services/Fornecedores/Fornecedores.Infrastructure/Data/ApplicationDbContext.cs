@@ -1,6 +1,4 @@
 ﻿using BuildingBlocks.Abstractions;
-using Fornecedores.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Fornecedores.Application.Data

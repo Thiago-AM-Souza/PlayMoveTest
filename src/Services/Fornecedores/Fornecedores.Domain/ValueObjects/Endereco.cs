@@ -1,4 +1,4 @@
-﻿using BuildingBlocks.DomainObjects;
+﻿using System.Text.RegularExpressions;
 
 namespace Fornecedores.Domain.ValueObjects
 {
@@ -18,7 +18,7 @@ namespace Fornecedores.Domain.ValueObjects
         {
             Logradouro = logradouro;
             Numero = numero;
-            Cep = cep;
+            Cep = cep.Replace("-", "").Trim();
             Cidade = cidade;
             Estado = estado;
         }
@@ -35,5 +35,30 @@ namespace Fornecedores.Domain.ValueObjects
             Cidade = cidade;
             Estado = estado;
         }
+
+        public static OneOf<bool, AppError> ValidarEstado(string estado)
+        {
+            var validar = Regex.IsMatch(estado, @"^[A-Z]{2}$");
+
+            if (!validar)
+            {
+                return new ErroFormatoIncorreto("O estado deve estar no formato de duas letras, Ex: 'SP'.", ErrorType.Validation);
+            }
+
+            return true;
+        }
+
+        public static OneOf<bool, AppError> ValidarCep(string cep)
+        {
+            var validar = Regex.IsMatch(cep, @"^\d{5}-?\d{3}$");
+
+            if (!validar)
+            {
+                return new ErroFormatoIncorreto("O CEP deve estar no formato 'XXXXXXXX' ou 'XXXXX-XXX'.", ErrorType.Validation);
+            }
+
+            return true;
+        }
+
     }
 }
