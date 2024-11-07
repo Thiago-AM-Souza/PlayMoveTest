@@ -28,7 +28,7 @@ Body para usar na autenticação.
 
 - .NET 8
 - Clean Architecture
-- CQRS
+- MediatR
 - Carter
 - JWT
 - OneOf
